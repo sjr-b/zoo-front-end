@@ -2,51 +2,62 @@ var animalPopulation = 0;
 // var allAnimals - a global array containing Animal objects
 var allAnimals = [];
 
+// run() or start() - a function called from document.ready() that creates 5 initial animals
+function start(){
+
+}
+
 // createAnimal() - a function which uses jQuery .val() to grab values from page and a 
 // switch statement to create an instance of the correct animal.  Call listAnimal() when done.
+function createAnimal(){
+    var type = $("#typeOfAnimal").val();
+    var name = $("#animalName").val();
+    switch(type) {
+        case "tig":
+            var animal = new Tiger()
+        case "bear":
+            // code block
+        case "uni":
+            //code
+        case "gir":
+            //code
+        case "bee":
+            //cpde
+    }
+    listAnimal();
+}
 
 // feedAnimals() - a function which uses jQuery .val() to grab the food value from the page 
 // and feed it to each animal.  Results write out in the log.
+function feedAnimal(){
+
+}
 
 // listAnimals() - a function which lists every animal name and type.  Should be run on a
-//  button click as well as whenever a new animal is created.
+//  page load as well as whenever a new animal is created.
+function listAnimals(){
 
-// run() or start() - a function called from document.ready() that creates 5 initial animals
+}
 
 // deleteAnimal(name) - a function which receives an animal name from an onclick handler
 // and removes that name from allAnimals.  Use array.splice(indexToRemove, itemsToRemove) to remove the animal.  
-// Call listAnimals() when done. 
+// Call listAnimals() when done.
+function deleteAnimal(){
+    // blah
+    listAnimals();
+}
 
 
 // Some edits and changes to your classes like writing console statements to the page 
-// rather than to the console.  
+// rather than to the console.
 
-function run(){
-    var tigger = new Tiger("Tigger");
-    var pooh = new Bear("Pooh");
-    var rarity = new Unicorn("Rarity");
-    var gemma = new Giraffe("Gemma");
-    var stinger = new Bee("Stinger");
-    var zoebot = new Zookeeper("Zoebot");
-}
-
-class Zookeeper {
-    constructor(name) {
-        this.name = name;
-    }
-    feedAnimals(animals, food) {
-        console.log(this.name + " is feeding " + food + " to " + animals.length + " of " + animalPopulation + " animals");
-        for (var a = 0; a < animals.length; a++){
-            animals[a].eat(food);
-        }
-    }
-}
 
 class Animal {
     constructor(name, favoriteFood) {
         this.name = name;
         this.favoriteFood = favoriteFood;
         animalPopulation++;
+        allAnimals.push(this);
     }
     sleep() {
         console.log(this.name + " sleeps for 8 hours");
@@ -104,3 +115,25 @@ class Bee extends Animal {
         console.log(this.name + " never sleeps");
     }
 }
+
+/*function run(){
+        var tigger = new Tiger("Tigger");
+        var pooh = new Bear("Pooh");
+        var rarity = new Unicorn("Rarity");
+        var gemma = new Giraffe("Gemma");
+        var stinger = new Bee("Stinger");
+    }
+
+    class Zookeeper {
+        constructor(name) {
+            this.name = name;
+        }
+        feedAnimals(animals, food) {
+            console.log(this.name + " is feeding " + food + " to " + animals.length + " of " + animalPopulation + " animals");
+            for (var a = 0; a < animals.length; a++){
+                animals[a].eat(food);
+            }
+        }
+    }*/
+
+// DELETE RUN() AND ZOOKEEPER CLASS IF NOT NEEDED AT END

@@ -8,20 +8,22 @@
     <link rel = "stylesheet" href = "style.css">
     <title>Zoo</title>
 </head>
-<body>
+<body onload="start()">
 <div class = "border rounded border-dark" id = "background">
     <div id = "title"><h1>Create Your Own Zoo</h1></div>
     <div class = "border rounded border-dark" id = "creation">
         <h4>Animal Creation</h4>
         Choose an animal to create.
-        <select id = "type">
+        <select class = "select" id = "typeOfAnimal">
             <option value = "tig">Tiger</option>
             <option value = "bear">Bear</option>
             <option value = "uni">Unicorn</option>
             <option value = "gir">Giraffe</option>
             <option value = "bee">Bee</option>
         </select>
-        <input type = "text">
+        <input type = "text" placeholder = "animal name" id = "animalName">
+        <br>
+        <button id = "animalCreation" onclick = "createAnimal()">Create Animal</button>
     </div>
     <div class = "border rounded border-dark">
         <h4>Animal Info</h4>
