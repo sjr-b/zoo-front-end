@@ -4,27 +4,57 @@ var allAnimals = [];
 
 // run() or start() - a function called from document.ready() that creates 5 initial animals
 function start(){
-
+    var tigger = new Tiger("Tigger");
+    tigger.eat("meat");
+    var pooh = new Bear("Pooh");
+    pooh.eat("fish");
+    pooh.eat("meat");
+    var rarity = new Unicorn("Rarity");
+    rarity.eat("marshmellows");
+    rarity.sleep();
+    var gemma = new Giraffe("Gemma");
+    gemma.eat("meat");
+    gemma.eat("leaves");
+    gemma.sleep();
+    var pooh2 = createAnimal("bear", "pooh2");
+    // var rarity = createAnimal("uni", "rarity");
+    // var gemma = createAnimal("gir", "gemma");
+    // var stinger = createAnimal("bee", "stinger");
+    listAnimals();
 }
 
 // createAnimal() - a function which uses jQuery .val() to grab values from page and a 
 // switch statement to create an instance of the correct animal.  Call listAnimal() when done.
-function createAnimal(){
-    var type = $("#typeOfAnimal").val();
-    var name = $("#animalName").val();
+function createAnimal(automaticType, automaticName){
+    if (automaticType == null){
+        var type = $("#typeOfAnimal").val();
+    } else {
+        var type = automaticType;
+    }
+    if (automaticName == null){
+        var name = $("#animalName").val();
+    } else {
+        var name = automaticName;
+    }
     switch(type) {
         case "tig":
-            var animal = new Tiger()
+            var animal = new Tiger(name);
+            break;
         case "bear":
-            // code block
+            var animal = new Bear(name);
+            break;
         case "uni":
-            //code
+            var animal = new Unicorn(name);
+            break;
         case "gir":
-            //code
+            var animal = new Giraffe(name);
+            break;
         case "bee":
-            //cpde
+            var animal = new Bee(name);
+            break;
     }
-    listAnimal();
+    listAnimals();
+    return animal;
 }
 
 // feedAnimals() - a function which uses jQuery .val() to grab the food value from the page 
@@ -36,7 +66,13 @@ function feedAnimal(){
 // listAnimals() - a function which lists every animal name and type.  Should be run on a
 //  page load as well as whenever a new animal is created.
 function listAnimals(){
+    var localList = "";
+    var divider = "";
+    for (var a = 0; a < allAnimals.length; a++){
+        localList += allAnimals[a].name + " (" + allAnimals[a].constructor.name + ")   " + "<br>";
 
+    }
+    $("#animalList").html(localList);
 }
 
 // deleteAnimal(name) - a function which receives an animal name from an onclick handler
