@@ -10,16 +10,16 @@ function start(){
     pooh.eat("fish");
     pooh.eat("meat");
     var rarity = new Unicorn("Rarity");
-    rarity.eat("marshmellows");
+    rarity.eat("marshmallows");
     rarity.sleep();
     var gemma = new Giraffe("Gemma");
     gemma.eat("meat");
     gemma.eat("leaves");
     gemma.sleep();
     var pooh2 = createAnimal("bear", "pooh2");
-    // var rarity = createAnimal("uni", "rarity");
-    // var gemma = createAnimal("gir", "gemma");
-    // var stinger = createAnimal("bee", "stinger");
+    var rarity2 = createAnimal("uni", "rarity2");
+    var gemma2 = createAnimal("gir", "gemma2");
+    var stinger2 = createAnimal("bee", "stinger2");
     listAnimals();
 }
 
@@ -60,17 +60,26 @@ function createAnimal(automaticType, automaticName){
 // feedAnimals() - a function which uses jQuery .val() to grab the food value from the page 
 // and feed it to each animal.  Results write out in the log.
 function feedAnimal(){
-
+    var inputName = $("#animalTBFed").val();
+    var food = $("#menu").val();
+    var animal;
+    for (var a = 0; a < allAnimals.length; a++){
+        if (inputName == allAnimals[a]){
+            var animal = allAnimals[a];
+        }
+    }
+    animal.feedAnimal()
+    if (animal == null){
+        alert("Oops! Your input did not match any of the animals you have created. Please make sure to recheck your spelling and capitalization. Thank you!");
+    }
 }
 
 // listAnimals() - a function which lists every animal name and type.  Should be run on a
 //  page load as well as whenever a new animal is created.
 function listAnimals(){
     var localList = "";
-    var divider = "";
     for (var a = 0; a < allAnimals.length; a++){
         localList += allAnimals[a].name + " (" + allAnimals[a].constructor.name + ")   " + "<br>";
-
     }
     $("#animalList").html(localList);
 }
@@ -82,7 +91,6 @@ function deleteAnimal(){
     // blah
     listAnimals();
 }
-
 
 // Some edits and changes to your classes like writing console statements to the page 
 // rather than to the console.
@@ -124,7 +132,7 @@ class Bear extends Animal {
 
 class Unicorn extends Animal {
     constructor(name) {
-        super(name, "marshmellows");
+        super(name, "marshmallows");
     }
     sleep() {
         console.log(this.name + " sleeps in a cloud");

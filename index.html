@@ -28,8 +28,27 @@
     </div>
     <div class = "border rounded border-dark">
         <h4>Animal Info</h4>
-        <div id = "animalList"></div>
-        <div id = "fedAnimals"></div>
+        <div><h5>List of Animals</h5>
+            <span id = "animalList"></span>
+        </div>
+        <div id = "fedAnimals">
+            <h5>Menu for Animals</h5>
+            <select class = "select" id = "menu">
+                <option value = "meat">Meat</option>
+                <option value = "fish">Fish</option>
+                <option value = "mar">Marshmallows</option>
+                <option value = "lea">Leaves</option>
+                <option value = "hon">Honey</option>
+                <option value = "cof">Coffee</option>
+                <option value = "pad">Pad Thai</option>
+                <option value = "ffc">Fish Fingers & Custard</option>
+                <option value = "jel">Jelly Babies</option>
+                <option value = "chu">Churros</option>
+            </select>
+            <input type = "text" placeholder = "Animal You're Feeding" id = "animalTBFed" value>
+            <br>
+            <button id = "foodChoice" onclick = "feedAnimal()">Choose Food Option</button>
+        </div>
     </div>
 </div>
 </body>
