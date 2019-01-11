@@ -54,24 +54,18 @@ function createAnimal(automaticType, automaticName){
             break;
     }
     listAnimals();
+    optionsOfAnimals();
     return animal;
 }
 
 // feedAnimals() - a function which uses jQuery .val() to grab the food value from the page 
 // and feed it to each animal.  Results write out in the log.
 function feedAnimal(){
-    var inputName = $("#animalTBFed").val();
+    $("#animalFeed").empty();
     var food = $("#menu").val();
-    var animal;
     for (var a = 0; a < allAnimals.length; a++){
-        if (inputName == allAnimals[a]){
-            animal = allAnimals[a];
-        }
+            allAnimals[a].eat(food);
     }
-    if (animal == null){
-        alert("Oops! Your input did not match any of the animals you have created. Please make sure to recheck your spelling and capitalization. Thank you!");
-    }
-    animal.eat(food);
 }
 
 // listAnimals() - a function which lists every animal name and type.  Should be run on a
@@ -79,7 +73,7 @@ function feedAnimal(){
 function listAnimals(){
     var localList = "";
     for (var a = 0; a < allAnimals.length; a++){
-        localList += allAnimals[a].name + " (" + allAnimals[a].constructor.name + ")   " + "<br>";
+        localList += allAnimals[a].name + " (" + allAnimals[a].constructor.name + ", favorite food is " + allAnimals[a].favoriteFood + ")" + "<br>";
     }
     $("#animalList").html(localList);
 }
@@ -87,14 +81,20 @@ function listAnimals(){
 // deleteAnimal(name) - a function which receives an animal name from an onclick handler
 // and removes that name from allAnimals.  Use array.splice(indexToRemove, itemsToRemove) to remove the animal.  
 // Call listAnimals() when done.
-function deleteAnimal(){
+function deleteAnimal() {
     // blah
     listAnimals();
 }
 
-// Some edits and changes to your classes like writing console statements to the page 
-// rather than to the console.
-
+// This function inputs all of the options into the select box for choosing an animal to delete or rename.
+function optionsOfAnimals(){
+    for (var a = 0; a < allAnimals.length; a++){
+        var option = document.createElement("option");
+        option.val(allAnimals[a]);
+        $("#identityFind").add(option);
+        $("#animalRemovalChoice").add(option);
+    }
+}
 
 class Animal {
     constructor(name, favoriteFood) {
@@ -104,12 +104,11 @@ class Animal {
         allAnimals.push(this);
     }
     sleep() {
-        $("#fedAnimals").append(this.name + " sleeps for 8 hours <br>");
+        $("#animalFeed").append(this.name + " sleeps for 8 hours <br>");
     }
     eat(food) {
-        $("#fedAnimals").append(this.name + " eats " + food + "<br>");
-        (this.favoriteFood == food) ? $("#fedAnimals").append("YUM!!! " + this.name + " wants more " + food) : this.sleep(this.name);
-        $("#fedAnimals").append("<br>");
+        $("#animalFeed").append(this.name + " eats " + food + "<br>");
+        (this.favoriteFood == food) ? $("#animalFeed").append("YUM!!! " + this.name + " wants more " + food + "<br>") : this.sleep(this.name);
     }
     static getPopulation() {
         return animalPopulation;
@@ -127,7 +126,7 @@ class Bear extends Animal {
         super(name, "fish");
     }
     sleep() {
-        $("#fedAnimals").append(this.name + " hibernates for 4 months");
+        $("#animalFeed").append(this.name + " hibernates for 4 months <br>");
     }
 }
 
@@ -136,7 +135,7 @@ class Unicorn extends Animal {
         super(name, "marshmallows");
     }
     sleep() {
-        $("#fedAnimals").append(this.name + " sleeps in a cloud" + "<br>");
+        $("#animalFeed").append(this.name + " sleeps in a cloud" + "<br>");
     }
 }
 
@@ -145,7 +144,7 @@ class Giraffe extends Animal {
         super (name, "leaves");
     }
     eat(food) {
-        (food == "leaves") ? super.eat("leaves") : $("#fedAnimals").append("YUCK!!! " + this.name + " will not eat " + food + "<br>");
+        (food == "leaves") ? super.eat("leaves") : $("#animalFeed").append("YUCK!!! " + this.name + " will not eat " + food + "<br>");
     }
 }
 
@@ -154,10 +153,10 @@ class Bee extends Animal {
         super (name, "pollen");
     }
     eat(food) {
-        (food == "pollen") ? super.eat("pollen") : $("#fedAnimals").append("YUCK!!! " + this.name + " will not eat " + food + "<br>");
+        (food == "pollen") ? super.eat("pollen") : $("#animalFeed").append("YUCK!!! " + this.name + " will not eat " + food + "<br>");
     }
     sleep(){
-        $("#fedAnimals").append(this.name + " never sleeps <br>");
+        $("#animalFeed").append(this.name + " never sleeps <br>");
     }
 }
 

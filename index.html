@@ -22,33 +22,48 @@
             <option value = "gir">Giraffe</option>
             <option value = "bee">Bee</option>
         </select>
-        <input type = "text" placeholder = "animal name" id = "animalName">
+        <input type = "text" placeholder = "animal name" id = "animalName" value = "">
         <br>
         <button id = "animalCreation" onclick = "createAnimal()">Create Animal</button>
     </div>
     <div class = "border rounded border-dark">
         <h4>Animal Info</h4>
-        <div><h5>List of Animals</h5>
+        <div>
+            <h5>List of Animals</h5>
             <span id = "animalList"></span>
+        </div>
+        <div>
+            <h5>Animal Feed</h5>
+            <span id = "animalFeed"></span>
         </div>
         <div id = "fedAnimals">
             <h5>Menu for Animals</h5>
             <select class = "select" id = "menu">
                 <option value = "meat">Meat</option>
                 <option value = "fish">Fish</option>
-                <option value = "mar">Marshmallows</option>
-                <option value = "lea">Leaves</option>
-                <option value = "hon">Honey</option>
-                <option value = "cof">Coffee</option>
-                <option value = "pad">Pad Thai</option>
-                <option value = "ffc">Fish Fingers & Custard</option>
-                <option value = "jel">Jelly Babies</option>
-                <option value = "chu">Churros</option>
+                <option value = "marshmallows">Marshmallows</option>
+                <option value = "leaves">Leaves</option>
+                <option value = "pollen">Pollen</option>
+                <option value = "coffee">Coffee</option>
+                <option value = "pad thai">Pad Thai</option>
+                <option value = "fish fingers and custard">Fish Fingers & Custard</option>
+                <option value = "jelly babies">Jelly Babies</option>
+                <option value = "churros">Churros</option>
             </select>
-            <input type = "text" placeholder = "Animal You're Feeding" id = "animalTBFed">
-            <br>
             <button id = "foodChoice" onclick = "feedAnimal()">Choose Food Option</button>
             <br>
+        </div>
+        <div id = "removeAnimal">
+            <h5>Animal Removal</h5>
+            <select class = "select" id = "animalRemovalChoice">
+
+            </select>
+        </div>
+        <div id = "identityChange">
+            <h5>Change Animal's Name</h5>
+            <select class = "select" id = "identityFind">
+
+            </select>
         </div>
     </div>
 </div>
