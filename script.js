@@ -21,6 +21,7 @@ function start(){
     var gemma2 = createAnimal("gir", "gemma2");
     var stinger2 = createAnimal("bee", "stinger2");
     listAnimals();
+    optionsOfAnimals();
 }
 
 // createAnimal() - a function which uses jQuery .val() to grab values from page and a 
