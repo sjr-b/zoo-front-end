@@ -65,13 +65,13 @@ function feedAnimal(){
     var animal;
     for (var a = 0; a < allAnimals.length; a++){
         if (inputName == allAnimals[a]){
-            var animal = allAnimals[a];
+            animal = allAnimals[a];
         }
     }
-    animal.feedAnimal()
     if (animal == null){
         alert("Oops! Your input did not match any of the animals you have created. Please make sure to recheck your spelling and capitalization. Thank you!");
     }
+    animal.eat(food);
 }
 
 // listAnimals() - a function which lists every animal name and type.  Should be run on a
@@ -104,11 +104,12 @@ class Animal {
         allAnimals.push(this);
     }
     sleep() {
-        console.log(this.name + " sleeps for 8 hours");
+        $("#fedAnimals").append(this.name + " sleeps for 8 hours <br>");
     }
     eat(food) {
-        console.log(this.name + " eats " + food);
-        (this.favoriteFood == food) ? console.log("YUM!!! " + this.name + " wants more " + food) : this.sleep(this.name);
+        $("#fedAnimals").append(this.name + " eats " + food + "<br>");
+        (this.favoriteFood == food) ? $("#fedAnimals").append("YUM!!! " + this.name + " wants more " + food) : this.sleep(this.name);
+        $("#fedAnimals").append("<br>");
     }
     static getPopulation() {
         return animalPopulation;
@@ -126,7 +127,7 @@ class Bear extends Animal {
         super(name, "fish");
     }
     sleep() {
-        console.log(this.name + " hibernates for 4 months");
+        $("#fedAnimals").append(this.name + " hibernates for 4 months");
     }
 }
 
@@ -135,7 +136,7 @@ class Unicorn extends Animal {
         super(name, "marshmallows");
     }
     sleep() {
-        console.log(this.name + " sleeps in a cloud");
+        $("#fedAnimals").append(this.name + " sleeps in a cloud" + "<br>");
     }
 }
 
@@ -144,7 +145,7 @@ class Giraffe extends Animal {
         super (name, "leaves");
     }
     eat(food) {
-        (food == "leaves") ? super.eat("leaves") : console.log("YUCK!!! " + this.name + " will not eat " + food);
+        (food == "leaves") ? super.eat("leaves") : $("#fedAnimals").append("YUCK!!! " + this.name + " will not eat " + food + "<br>");
     }
 }
 
@@ -153,10 +154,10 @@ class Bee extends Animal {
         super (name, "pollen");
     }
     eat(food) {
-        (food == "pollen") ? super.eat("pollen") : console.log("YUCK!!! " + this.name + " will not eat " + food);
+        (food == "pollen") ? super.eat("pollen") : $("#fedAnimals").append("YUCK!!! " + this.name + " will not eat " + food + "<br>");
     }
     sleep(){
-        console.log(this.name + " never sleeps");
+        $("#fedAnimals").append(this.name + " never sleeps <br>");
     }
 }
 
