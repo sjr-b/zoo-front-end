@@ -51,6 +51,9 @@ function createAnimal(automaticType, automaticName){
         case "bee":
             var animal = new Bee(name);
             break;
+        case "gabe": // this was done with the permission of Gabe, he fully endorses this (quote: "I consent to you using my name")
+            var animal = new Gabe(name);
+            break;
     }
     listAnimals();
     return animal;
@@ -85,6 +88,7 @@ function deleteAnimal() {
         if (name == allAnimals[a].name){
             $("#animalFeed").append(allAnimals[a].name + " has been either released into the wild, or sent to another zoo.");
             allAnimals.splice(a, 1);
+            animalPopulation--;
         }
     }
     listAnimals();
@@ -98,6 +102,7 @@ function changeName(){
     for (var a = 0; a < animalPopulation; a++){
         if (oldName == allAnimals[a].name){
             allAnimals[a].name = newName;
+            $("#animalFeed").append(oldName + " is now known as " + newName);
         }
     }
     listAnimals();
@@ -166,6 +171,12 @@ class Bee extends Animal {
     }
     sleep(){
         $("#animalFeed").append(this.name + " never sleeps <br>");
+    }
+}
+
+class Gabe extends Animal { // this was done with the permission of Gabriel Fantacone
+    constructor(name) {
+        super (name, "chocolate");
     }
 }
 
