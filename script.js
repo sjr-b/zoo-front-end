@@ -61,7 +61,7 @@ function createAnimal(automaticType, automaticName){
 function feedAnimal(){
     $("#animalFeed").empty();
     var food = $("#menu").val();
-    for (var a = 0; a < allAnimals.length; a++){
+    for (var a = 0; a < animalPopulation; a++){
             allAnimals[a].eat(food);
     }
 }
@@ -70,7 +70,7 @@ function feedAnimal(){
 //  page load as well as whenever a new animal is created.
 function listAnimals(){
     var localList = "";
-    for (var a = 0; a < allAnimals.length; a++){
+    for (var a = 0; a < animalPopulation; a++){
         localList += allAnimals[a].name + " (" + allAnimals[a].constructor.name + ", favorite food is " + allAnimals[a].favoriteFood + ")" + "<br>";
     }
     $("#animalList").html(localList);
@@ -81,7 +81,7 @@ function listAnimals(){
 // Call listAnimals() when done.
 function deleteAnimal() {
     var name = $("#removalInput").val();
-    for (var a = 0; a < allAnimals.length; a++){
+    for (var a = 0; a < animalPopulation; a++){
         if (name == allAnimals[a].name){
             $("#animalFeed").append(allAnimals[a].name + " has been either released into the wild, or sent to another zoo.");
             allAnimals.splice(a, 1);
@@ -95,7 +95,7 @@ function deleteAnimal() {
 function changeName(){
     var oldName = $("#identityInput").val();
     var newName = $("#newIdentityInput").val();
-    for (var a = 0; a < allAnimals.length; a++){
+    for (var a = 0; a < animalPopulation; a++){
         if (oldName == allAnimals[a].name){
             allAnimals[a].name = newName;
         }
