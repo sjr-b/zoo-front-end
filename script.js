@@ -4,24 +4,22 @@ var allAnimals = [];
 
 // run() or start() - a function called from document.ready() that creates 5 initial animals
 function start(){
-    var tigger = new Tiger("Tigger");
+    var tigger = createAnimal("tig", "Tigger");
     tigger.eat("meat");
-    var pooh = new Bear("Pooh");
+    var pooh = createAnimal("bear", "Pooh");
     pooh.eat("fish");
     pooh.eat("meat");
-    var rarity = new Unicorn("Rarity");
+    var rarity = createAnimal("uni", "Rarity");
     rarity.eat("marshmallows");
     rarity.sleep();
-    var gemma = new Giraffe("Gemma");
+    var gemma = createAnimal("gir", "Gemma");
     gemma.eat("meat");
     gemma.eat("leaves");
     gemma.sleep();
-    var pooh2 = createAnimal("bear", "pooh2");
-    var rarity2 = createAnimal("uni", "rarity2");
-    var gemma2 = createAnimal("gir", "gemma2");
-    var stinger2 = createAnimal("bee", "stinger2");
+    var stinger = createAnimal("bee", "Stinger");
+    stinger.eat("honey");
+    stinger.sleep();
     listAnimals();
-    optionsOfAnimals();
 }
 
 // createAnimal() - a function which uses jQuery .val() to grab values from page and a 
@@ -55,7 +53,6 @@ function createAnimal(automaticType, automaticName){
             break;
     }
     listAnimals();
-    optionsOfAnimals();
     return animal;
 }
 
@@ -83,18 +80,29 @@ function listAnimals(){
 // and removes that name from allAnimals.  Use array.splice(indexToRemove, itemsToRemove) to remove the animal.  
 // Call listAnimals() when done.
 function deleteAnimal() {
-    // blah
+    var name = $("#removalInput").val();
+    for (var a = 0; a < allAnimals.length; a++){
+        if (name == allAnimals[a].name){
+            $("#animalFeed").append(allAnimals[a].name + " has been either released into the wild, or sent to another zoo.");
+            allAnimals.splice(a, 1);
+        }
+    }
     listAnimals();
+    $("#removalInput").val("");
 }
 
-// This function inputs all of the options into the select box for choosing an animal to delete or rename.
-function optionsOfAnimals(){
+// this function changes an animal's name.
+function changeName(){
+    var oldName = $("#identityInput").val();
+    var newName = $("#newIdentityInput").val();
     for (var a = 0; a < allAnimals.length; a++){
-        var option = document.createElement("option");
-        option.val(allAnimals[a]);
-        $("#identityFind").add(option);
-        $("#animalRemovalChoice").add(option);
+        if (oldName == allAnimals[a].name){
+            allAnimals[a].name = newName;
+        }
     }
+    listAnimals();
+    $("#identityInput").val("");
+    $("#newIdentityInput").val("");
 }
 
 class Animal {

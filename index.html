@@ -22,7 +22,7 @@
             <option value = "gir">Giraffe</option>
             <option value = "bee">Bee</option>
         </select>
-        <input type = "text" placeholder = "animal name" id = "animalName" value = "">
+        <input type = "text" placeholder = "Animal Name" id = "animalName" value = "">
         <br>
         <button id = "animalCreation" onclick = "createAnimal()">Create Animal</button>
     </div>
@@ -31,10 +31,6 @@
         <div>
             <h5>List of Animals</h5>
             <span id = "animalList"></span>
-        </div>
-        <div>
-            <h5>Animal Feed</h5>
-            <span id = "animalFeed"></span>
         </div>
         <div id = "fedAnimals">
             <h5>Menu for Animals</h5>
@@ -55,15 +51,19 @@
         </div>
         <div id = "removeAnimal">
             <h5>Animal Removal</h5>
-            <select class = "select" id = "animalRemovalChoice">
-
-            </select>
+            <input class = "input" placeholder = "Animal Name" id = "removalInput" value = "">
+            <button class = "button" onclick = "deleteAnimal()" id = "removalButton">Remove This Animal</button>
         </div>
         <div id = "identityChange">
             <h5>Change Animal's Name</h5>
-            <select class = "select" id = "identityFind">
-
-            </select>
+            <input class = "input" placeholder = "Animal's Current Name" id = "identityInput" value = "">
+            <input class = "input" placeholder = "Animal's New Name" id = "newIdentityInput" value = "">
+            <br>
+            <button class = "button" onclick = "changeName()" id = "identityButton">Change Animal's Name</button>
+        </div>
+        <div>
+            <h5>Animal Feed</h5>
+            <span id = "animalFeed"></span>
         </div>
     </div>
 </div>
