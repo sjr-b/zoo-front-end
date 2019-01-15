@@ -24,16 +24,16 @@ function start(){
 
 // createAnimal() - a function which uses jQuery .val() to grab values from page and a 
 // switch statement to create an instance of the correct animal.  Call listAnimal() when done.
-function createAnimal(automaticType, automaticName){
-    if (automaticType == null){
+function createAnimal(startType, startName){
+    if (startType == null){
         var type = $("#typeOfAnimal").val();
     } else {
-        var type = automaticType;
+        var type = startType;
     }
-    if (automaticName == null){
+    if (startName == null){
         var name = $("#animalName").val();
     } else {
-        var name = automaticName;
+        var name = startName;
     }
     switch(type) {
         case "tig":
@@ -55,8 +55,13 @@ function createAnimal(automaticType, automaticName){
             var animal = new Gabe(name);
             break;
     }
-    listAnimals();
-    return animal;
+    if (name == ""){
+        alert("Oops! You didn't input any name for your animal. Please do so now.");
+        allAnimals.splice(-1, 1);
+    } else {
+        listAnimals();
+        return animal;
+    }
 }
 
 // feedAnimals() - a function which uses jQuery .val() to grab the food value from the page 
@@ -91,6 +96,9 @@ function deleteAnimal() {
             animalPopulation--;
         }
     }
+    if (name == ""){
+        alert("Oops! You didn't enter any names. Please do so now.");
+    }
     listAnimals();
     $("#removalInput").val("");
 }
@@ -104,6 +112,9 @@ function changeName(){
             allAnimals[a].name = newName;
             $("#animalFeed").append(oldName + " is now known as " + newName);
         }
+    }
+    if (oldName == "" || newName == "") {
+        alert("Oops! The current name of the animal and/or the name you want it to have is blank. Please correct this error. Thank you!");
     }
     listAnimals();
     $("#identityInput").val("");
@@ -179,25 +190,3 @@ class Gabe extends Animal { // this was done with the permission of Gabriel Fant
         super (name, "chocolate");
     }
 }
-
-/*function run(){
-        var tigger = new Tiger("Tigger");
-        var pooh = new Bear("Pooh");
-        var rarity = new Unicorn("Rarity");
-        var gemma = new Giraffe("Gemma");
-        var stinger = new Bee("Stinger");
-    }
-
-    class Zookeeper {
-        constructor(name) {
-            this.name = name;
-        }
-        feedAnimals(animals, food) {
-            console.log(this.name + " is feeding " + food + " to " + animals.length + " of " + animalPopulation + " animals");
-            for (var a = 0; a < animals.length; a++){
-                animals[a].eat(food);
-            }
-        }
-    }*/
-
-// DELETE RUN() AND ZOOKEEPER CLASS IF NOT NEEDED AT END
