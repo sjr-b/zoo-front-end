@@ -1,10 +1,12 @@
 body {
     background-image: url(https://us.123rf.com/450wm/nataleana/nataleana1609/nataleana160900015/63822060-abstract-print-animal-seamless-pattern-in-black-and-white-zebra-tiger-stripes-monochrome-repeating-b.jpg?ver=6);
-    font-family: "Helvetica";
+    font-family: "News Gothic MT";
     font-size: small;
+    letter-spacing: -.5px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    padding: 5px;
 }
 
 div {
@@ -15,7 +17,7 @@ div {
     margin: 20px;
 }
 
-h1, h4, h5, h6 {
+h1, h3, h4, h6 {
     font-family: "Bad Script";
 }
 

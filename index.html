@@ -13,7 +13,7 @@
 <div class = "border rounded border-dark" id = "background">
     <div id = "title"><h1>Create Your Own Zoo</h1></div>
     <div class = "border rounded border-dark" id = "creation">
-        <h4>Animal Creation</h4>
+        <h3>Animal Creation</h3>
         Choose an animal to create.
         <select class = "select" id = "typeOfAnimal">
             <option value = "tig">Tiger</option>
@@ -23,43 +23,44 @@
             <option value = "bee">Bee</option>
             <option value = "gabe">Gabe</option>
         </select>
-        <input type = "text" class = "rounded" placeholder = "Animal Name" id = "animalName" value = "">
+        <input type = "text" placeholder = "Animal Name" id = "animalName" value = "">
         <br>
-        <button class = "rounded" id = "animalCreation" onclick = "createAnimal()">Create Animal</button>
+        <button id = "animalCreation" onclick = "createAnimal()">Create Animal</button>
     </div>
     <div class = "border rounded border-dark">
-        <h4>Animal Info</h4>
+        <h3>Animal Info</h3>
         <div>
-            <h5>List of Animals</h5>
+            <h4>List of Animals</h4>
             <span id = "animalList"></span>
         </div>
         <div id = "fedAnimals">
-            <h5>Menu for Animals</h5>
+            <h4>Menu for Animals</h4>
             <select class = "select" id = "menu">
                 <option value = "meat">Meat</option>
                 <option value = "fish">Fish</option>
                 <option value = "marshmallows">Marshmallows</option>
                 <option value = "leaves">Leaves</option>
                 <option value = "pollen">Pollen</option>
-                <option value = "coffee">Coffee</option>
+                <option value = "cupcakes">Cupcakes</option>
                 <option value = "pad thai">Pad Thai</option>
                 <option value = "fish fingers and custard">Fish Fingers & Custard</option>
                 <option value = "jelly babies">Jelly Babies</option>
                 <option value = "churros">Churros</option>
                 <option value = "chocolate">Chocolate</option>
+                <option value = "apples">Apples</option>
             </select>
             <button id = "foodChoice" onclick = "feedAnimal()">Choose Food Option</button>
             <br>
         </div>
         <div id = "removeAnimal">
-            <h5>Animal Removal</h5>
+            <h4>Animal Removal</h4>
             <input class = "input" placeholder = "Animal Name" id = "removalInput" value = "">
             <button class = "button" onclick = "deleteAnimal()" id = "removalButton">Remove This Animal</button>
             <br>
-            <h6>Please note that if the animal's name is misspelled or not capitalized, this will not work.</h6>
+            <h6 >Please note that if the animal's name is misspelled or not capitalized, this will not work.</h6>
         </div>
         <div id = "identityChange">
-            <h5>Change Animal's Name</h5>
+            <h4>Change Animal's Name</h4>
             <input class = "input" placeholder = "Animal's Current Name" id = "identityInput" value = "">
             <input class = "input" placeholder = "Animal's New Name" id = "newIdentityInput" value = "">
             <button class = "button" onclick = "changeName()" id = "identityButton">Change Animal's Name</button>
@@ -67,7 +68,7 @@
             <h6>Please note that if the animal's name is misspelled or not capitalized, this will not work.</h6>
         </div>
         <div>
-            <h5>Animal Feed</h5>
+            <h4>Animal Feed</h4>
             <span id = "animalFeed"></span>
         </div>
     </div>

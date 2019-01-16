@@ -1,71 +1,58 @@
+// These are the global variables.
 var animalPopulation = 0;
-// var allAnimals - a global array containing Animal objects
 var allAnimals = [];
 
-// run() or start() - a function called from document.ready() that creates 5 initial animals
+// This function creates five animals to begin and lists them.
 function start(){
-    var tigger = createAnimal("tig", "Tigger");
+    var tigger = new Tiger("Tigger");
     tigger.eat("meat");
-    var pooh = createAnimal("bear", "Pooh");
+    var pooh = new Bear("Pooh");
     pooh.eat("fish");
     pooh.eat("meat");
-    var rarity = createAnimal("uni", "Rarity");
-    rarity.eat("marshmallows");
+    var rarity = new Unicorn("Rarity");
+    rarity.eat("marshmellows");
     rarity.sleep();
-    var gemma = createAnimal("gir", "Gemma");
+    var gemma = new Giraffe("Gemma");
     gemma.eat("meat");
     gemma.eat("leaves");
     gemma.sleep();
-    var stinger = createAnimal("bee", "Stinger");
-    stinger.eat("honey");
+    var stinger = new Bee("stinger");
     stinger.sleep();
     listAnimals();
 }
 
-// createAnimal() - a function which uses jQuery .val() to grab values from page and a 
-// switch statement to create an instance of the correct animal.  Call listAnimal() when done.
-function createAnimal(startType, startName){
-    if (startType == null){
-        var type = $("#typeOfAnimal").val();
-    } else {
-        var type = startType;
-    }
-    if (startName == null){
-        var name = $("#animalName").val();
-    } else {
-        var name = startName;
-    }
-    switch(type) {
-        case "tig":
-            var animal = new Tiger(name);
-            break;
-        case "bear":
-            var animal = new Bear(name);
-            break;
-        case "uni":
-            var animal = new Unicorn(name);
-            break;
-        case "gir":
-            var animal = new Giraffe(name);
-            break;
-        case "bee":
-            var animal = new Bee(name);
-            break;
-        case "gabe": // this was done with the permission of Gabe, he fully endorses this (quote: "I consent to you using my name")
-            var animal = new Gabe(name);
-            break;
-    }
-    if (name == ""){
+// This function creates a new animal.
+function createAnimal() {
+    var type = $("#typeOfAnimal").val();
+    var name = $("#animalName").val();
+    if (name == "") {
         alert("Oops! You didn't input any name for your animal. Please do so now.");
-        allAnimals.splice(-1, 1);
     } else {
+        switch (type) {
+            case "tig":
+                var animal = new Tiger(name);
+                break;
+            case "bear":
+                var animal = new Bear(name);
+                break;
+            case "uni":
+                var animal = new Unicorn(name);
+                break;
+            case "gir":
+                var animal = new Giraffe(name);
+                break;
+            case "bee":
+                var animal = new Bee(name);
+                break;
+            case "gabe": // this was done with the permission of Gabe, he fully endorses this (quote: "I consent to you using my name")
+                var animal = new Gabe(name);
+                break;
+        }
         listAnimals();
-        return animal;
     }
 }
 
-// feedAnimals() - a function which uses jQuery .val() to grab the food value from the page 
-// and feed it to each animal.  Results write out in the log.
+// This function feeds all the animals.
 function feedAnimal(){
     $("#animalFeed").empty();
     var food = $("#menu").val();
@@ -74,8 +61,7 @@ function feedAnimal(){
     }
 }
 
-// listAnimals() - a function which lists every animal name and type.  Should be run on a
-//  page load as well as whenever a new animal is created.
+// This function lists all the animals.
 function listAnimals(){
     var localList = "";
     for (var a = 0; a < animalPopulation; a++){
@@ -84,9 +70,7 @@ function listAnimals(){
     $("#animalList").html(localList);
 }
 
-// deleteAnimal(name) - a function which receives an animal name from an onclick handler
-// and removes that name from allAnimals.  Use array.splice(indexToRemove, itemsToRemove) to remove the animal.  
-// Call listAnimals() when done.
+// This function deletes an animal.
 function deleteAnimal() {
     var name = $("#removalInput").val();
     for (var a = 0; a < animalPopulation; a++){
@@ -103,7 +87,7 @@ function deleteAnimal() {
     $("#removalInput").val("");
 }
 
-// this function changes an animal's name.
+// This function changes an animal's name.
 function changeName(){
     var oldName = $("#identityInput").val();
     var newName = $("#newIdentityInput").val();
@@ -121,6 +105,7 @@ function changeName(){
     $("#newIdentityInput").val("");
 }
 
+// These are all the animal classes.
 class Animal {
     constructor(name, favoriteFood) {
         this.name = name;
@@ -185,8 +170,9 @@ class Bee extends Animal {
     }
 }
 
-class Gabe extends Animal { // this was done with the permission of Gabriel Fantacone
+// This was done with the permission of Gabriel Fantacone.
+class Gabe extends Animal {
     constructor(name) {
-        super (name, "chocolate");
+        super(name, "chocolate");
     }
 }
