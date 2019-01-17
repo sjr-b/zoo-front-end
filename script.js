@@ -10,13 +10,13 @@ function start(){
     pooh.eat("fish");
     pooh.eat("meat");
     var rarity = new Unicorn("Rarity");
-    rarity.eat("marshmellows");
+    rarity.eat("marshmallows");
     rarity.sleep();
     var gemma = new Giraffe("Gemma");
     gemma.eat("meat");
     gemma.eat("leaves");
     gemma.sleep();
-    var stinger = new Bee("stinger");
+    var stinger = new Bee("Stinger");
     stinger.sleep();
     listAnimals();
 }
@@ -50,6 +50,7 @@ function createAnimal() {
         }
         listAnimals();
     }
+    $("#animalName").val("");
 }
 
 // This function feeds all the animals.
@@ -73,36 +74,47 @@ function listAnimals(){
 // This function deletes an animal.
 function deleteAnimal() {
     var name = $("#removalInput").val();
+    var nameCorrectCheck = 0;
     for (var a = 0; a < animalPopulation; a++){
         if (name == allAnimals[a].name){
-            $("#animalFeed").append(allAnimals[a].name + " has been either released into the wild, or sent to another zoo.");
+            $("#animalFeed").append(allAnimals[a].name + " has been either released into the wild, or sent to another zoo. <br>");
             allAnimals.splice(a, 1);
             animalPopulation--;
+            nameCorrectCheck++;
         }
     }
     if (name == ""){
         alert("Oops! You didn't enter any names. Please do so now.");
     }
+    if (nameCorrectCheck == 0 && name != ""){
+        alert("Oops! The name you inputted did not match any of the animals. Please check your spelling and capitalization.");
+    } else {
+        $("#removalInput").val("");
+    }
     listAnimals();
-    $("#removalInput").val("");
 }
 
 // This function changes an animal's name.
 function changeName(){
     var oldName = $("#identityInput").val();
     var newName = $("#newIdentityInput").val();
+    var nameCorrectCheck = 0;
     for (var a = 0; a < animalPopulation; a++){
         if (oldName == allAnimals[a].name){
             allAnimals[a].name = newName;
-            $("#animalFeed").append(oldName + " is now known as " + newName);
+            $("#animalFeed").append(oldName + " is now known as " + newName + "<br>");
+            nameCorrectCheck++;
         }
     }
     if (oldName == "" || newName == "") {
         alert("Oops! The current name of the animal and/or the name you want it to have is blank. Please correct this error. Thank you!");
+    }if (nameCorrectCheck == 0 && oldName != "" && newName != ""){
+        alert("Oops! The name you inputted did not match any of the animals. Please check your spelling and capitalization.");
+    } else {
+        $("#identityInput").val("");
+        $("#newIdentityInput").val("");
     }
     listAnimals();
-    $("#identityInput").val("");
-    $("#newIdentityInput").val("");
 }
 
 // These are all the animal classes.
