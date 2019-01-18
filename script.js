@@ -106,11 +106,12 @@ function changeName(){
             nameCorrectCheck++;
         }
     }
+    // in case the user did not input anything
     if (oldName == "" || newName == "") {
         alert("Oops! The current name of the animal and/or the name you want it to have is blank. Please correct this error. Thank you!");
-    }if (nameCorrectCheck == 0 && oldName != "" && newName != ""){
+    } else if (nameCorrectCheck == 0 && oldName != "" && newName != ""){ // in case the user misspelled something
         alert("Oops! The name you inputted did not match any of the animals. Please check your spelling and capitalization.");
-    } else {
+    } else { // this just resets the inputs so the user doesn't have to
         $("#identityInput").val("");
         $("#newIdentityInput").val("");
     }
